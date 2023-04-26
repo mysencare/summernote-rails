@@ -2,7 +2,7 @@ module SummernoteRails
   module Rails
     class Engine < ::Rails::Engine
       initializer 'summernote-rails.assets.precompile' do |app|
-        app.config.assets.paths << root.join('vendor', 'assets', 'fonts')
+        app.config.assets.paths << root.join('vendor', 'assets', 'font')
 
         # fix for: https://github.com/twbs/bootstrap-sass/issues/960
         # regex no longer supported by assets.precompile
