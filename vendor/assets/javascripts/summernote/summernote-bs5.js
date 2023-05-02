@@ -7293,7 +7293,8 @@ var Buttons = /*#__PURE__*/function () {
             var $recentColor = $button.find('.note-recent-color');
 
             if (backColor) {
-              $recentColor.css('background-color', _this.options.colorButton.backColor);
+              // $recentColor.css('background-color', _this.options.colorButton.backColor);
+              $recentColor.css('background-color', 'transparent');
               $button.attr('data-backColor', _this.options.colorButton.backColor);
             }
 
@@ -7308,8 +7309,16 @@ var Buttons = /*#__PURE__*/function () {
             toggle: 'dropdown'
           }
         }), this.ui.dropdown({
-          items: (foreColor ? ['<div class="note-palette">', '<div class="note-palette-title">' + this.lang.color.foreground + '</div>', '<div>', '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="removeFormat" data-value="foreColor">', this.lang.color.resetToDefault, '</button>', '</div>', '<div class="note-holder" data-event="foreColor"><!-- fore colors --></div>', '<div>', '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="foreColorPicker-' + this.options.id + '">', this.lang.color.cpSelect, '</button>', '<input type="color" id="foreColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette-' + this.options.id + '">', '</div>', // Fix missing Div, Commented to find easily if it's wrong
-          '<div class="note-holder-custom" id="foreColorPalette-' + this.options.id + '" data-event="foreColor"></div>', '</div>'].join('') : ''),
+          items: (foreColor ? [
+              '<div class="note-palette">',
+                '<div class="note-palette-title">' + this.lang.color.foreground + '</div>',
+              '<div>',
+                '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="removeFormat" data-value="foreColor">', this.lang.color.resetToDefault, '</button>',
+              '</div>',
+              '<div class="note-holder" data-event="foreColor"><!-- fore colors --></div>',
+            '<div>',
+            '</div>', // Fix missing Div, Commented to find easily if it's wrong
+           '</div>'].join('') : ''),
           callback: function callback($dropdown) {
             $dropdown.find('.note-holder').each(function (idx, item) {
               var $holder = external_jQuery_default()(item);
@@ -8355,15 +8364,15 @@ var LinkDialog = /*#__PURE__*/function () {
           var isNewWindowChecked = linkInfo.isNewWindow !== undefined ? linkInfo.isNewWindow : _this.context.options.linkTargetBlank;
           $openInNewWindow.prop('checked', isNewWindowChecked);
           var useProtocolChecked = linkInfo.url ? false : _this.context.options.useProtocol;
-          $useProtocol.prop('checked', useProtocolChecked);
           $linkBtn.one('click', function (event) {
+            console.log($useProtocol.is(':checked'))
             event.preventDefault();
             deferred.resolve({
               range: linkInfo.range,
               url: $linkUrl.val(),
               text: $linkText.val(),
               isNewWindow: $openInNewWindow.is(':checked'),
-              checkProtocol: $useProtocol.is(':checked')
+              checkProtocol: true
             });
 
             _this.ui.hideDialog(_this.$dialog);
@@ -9726,7 +9735,7 @@ var HintPopover = /*#__PURE__*/function () {
     height: null,
     linkTargetBlank: true,
     useProtocol: true,
-    defaultProtocol: 'http://',
+    defaultProtocol: 'https://',
     focus: false,
     tabDisabled: false,
     tabSize: 4,

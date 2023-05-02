@@ -89,7 +89,7 @@
           var $button = ui.button({
             callback: function($node) {
               $node.html(text);
-              $node.attr('title', text);
+              // $node.attr('title', text);
               $node.attr('data-value', encodeURIComponent(text));
               $node.css({
                 width: COLUMN_WIDTH,
