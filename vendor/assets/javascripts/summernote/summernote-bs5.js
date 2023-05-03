@@ -189,7 +189,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default().extend((jquery__WEBPACK_IMPORTED_M
       redo: 'Redo'
     },
     specialChar: {
-      specialChar: 'Special Characters0',
+      specialChar: 'Special Characters',
       select: 'Select Special characters'
     },
     output: {
