@@ -5231,7 +5231,8 @@ var Editor = /*#__PURE__*/function () {
     this.createLink = this.wrapCommand(function (linkInfo) {
       var linkUrl = linkInfo.url;
       var linkText = linkInfo.text;
-      var isNewWindow = linkInfo.isNewWindow;
+      // var isNewWindow = linkInfo.isNewWindow;
+      var isNewWindow = true;
       var checkProtocol = linkInfo.checkProtocol;
 
       var rng = linkInfo.range || _this.getLastRange();
@@ -8263,7 +8264,15 @@ var LinkDialog = /*#__PURE__*/function () {
     key: "initialize",
     value: function initialize() {
       var $container = this.options.dialogsInBody ? this.$body : this.options.container;
-        var body = ['<div class="form-group note-form-group mb-3">', "<label for=\"note-dialog-link-txt-".concat(this.options.id, "\" class=\"form-label\">").concat(this.lang.link.textToDisplay, "</label>"), "<input id=\"note-dialog-link-txt-".concat(this.options.id, "\" class=\"note-link-text form-control note-form-control note-input\" type=\"text\"placeholder=\"" .concat(this.lang.link.textPlaceholder, "\"/>")), '</div>', '<div class="form-group note-form-group mb-3">', "<label for=\"note-dialog-link-url-".concat(this.options.id, "\" class=\"form-label\">").concat(this.lang.link.url, "</label>"), "<input id=\"note-dialog-link-url-".concat(this.options.id, "\" class=\"note-link-url form-control note-form-control note-input\" type=\"text\" value=\"http://\" placeholder=\"".concat(this.lang.link.linkPlaceholder, "\"/>")), '</div>', !this.options.disableLinkTarget ? external_jQuery_default()('<div></div>').append(this.ui.checkbox({
+        var body = [
+            '<div class="form-group note-form-group mb-3">',
+              "<label for=\"note-dialog-link-txt-".concat(this.options.id, "\" class=\"form-label\">").concat(this.lang.link.textToDisplay, "</label>"), "<input id=\"note-dialog-link-txt-".concat(this.options.id, "\" class=\"note-link-text form-control note-form-control note-input\" type=\"text\"placeholder=\"" .concat(this.lang.link.textPlaceholder, "\"/>")),
+            '</div>',
+            '<div class="form-group note-form-group mb-3">',
+              "<label for=\"note-dialog-link-url-".concat(this.options.id, "\" class=\"form-label\">").concat(this.lang.link.url, "</label>"),
+              "<input id=\"note-dialog-link-url-".concat(this.options.id, "\" class=\"note-link-url form-control note-form-control note-input\" type=\"text\" value=\"http://\" placeholder=\"".concat(this.lang.link.linkPlaceholder, "\"/>")),
+             '</div>',
+              !this.options.disableLinkTarget ? external_jQuery_default()('<div></div>').append(this.ui.checkbox({
         className: 'sn-checkbox-open-in-new-window',
         text: this.lang.link.openInNewWindow,
         checked: true
